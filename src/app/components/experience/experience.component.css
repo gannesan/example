@@ -1,0 +1,70 @@
+.column {
+    float: left;
+    width: 30%;
+    height: 20vh;
+    background-color: #27293d;
+    border-radius: 10px;
+    color: white;
+    margin: 10px;
+    border: 2px solid  #27293d;
+    opacity: 0.7;
+    text-align: left;
+    overflow: hidden;
+  }
+  
+  /* Clear floats */
+  .gridview:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .gridview{
+      height: 40vh;
+      overflow: auto;
+      padding: 20px 0 20px 0;
+      background-color: #D3D3D3;
+  }
+  .detail{
+      height: 35vh;
+  }
+  /* Responsive layout - makes a two column-layout instead of four columns */
+  @media screen and (max-width: 900px) {
+    .column {
+      width: 50%;
+    }
+  }
+  
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+    }
+  }
+
+  /* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+  .currentProject {
+  text-align: center;
+  width:35%;
+  margin: auto;
+  background-color:  #27293d;
+  color: white;
+  border-radius: 20px;
+  }

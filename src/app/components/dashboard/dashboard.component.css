@@ -1,0 +1,131 @@
+.panel{
+    width: 25%;
+    height: 100vh;
+    z-index: 1000;
+    overflow: hidden;
+    position: absolute;
+    box-shadow: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.9);
+    user-select: none;
+    background-color: transparent;
+}
+.right-panel-topbar{font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    display: flex;
+    color: #8e8e8e;
+    padding: 19px 25px;
+    justify-content: center;
+}
+.right-panel-topbar div{
+    display: inline-block;
+    padding-right: 20px;
+}
+
+.newscene-properties{    display: flex;
+    justify-content: space-between;}
+
+    .right-panel-newscene{
+        padding: 10px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        display: flex;
+        justify-content: flex-start;
+        font-size: 14px;
+        color: #000;
+        height: 48px;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .infoText {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        display: flex;
+        align-items: flex-start;
+        width: 268px;
+        color: #999;
+        font-size: 12px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+
+    .angle-input{
+        margin-left: 8px;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .angle-input__block_heading {
+        color: #999;
+        font-size: 12px;
+        line-height: 14px;
+        margin-top: 12px;
+        margin-bottom: 8px;
+    }
+
+    .flex_padding {
+        margin-left: -8px;
+    }
+
+    .flex_padding>div {
+        margin-left: 8px;
+    }
+
+    .angle__block_heading {
+        color: #999;
+        font-size: 12px;
+        line-height: 14px;
+        margin-top: 12px;
+        margin-bottom: 8px;
+    }
+
+    .angle__text_slide {
+        position: relative;
+        width: 82px;
+        height: 32px;
+        border: 1px solid #d9d9d9;
+        border-radius: 2px;
+        display: inline-flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .angle-props__icon {
+        position: absolute;
+        opacity: 0.7;
+        top: 2px;
+        left: 2px;
+    }
+
+    .angle__text_slide__input {
+        width: 40px;
+        background-color: transparent;
+        color: #595959;
+        border: none;
+        margin-top: 0;
+        margin-left: 28px;
+    }
+    .angle-props__scrolls {
+        justify-content: space-around;
+        display: flex;
+        flex-flow: column;
+        height: 22px;
+        transition: all 0.2s ease-in-out;
+        opacity: 0;
+    }
+    input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+.imglist li{
+    background-color: aliceblue;
+    margin: 10px 0px;
+    padding: 10px 50px;
+    text-align: left;
+    list-style-type: none;
+}
+.imglist{text-align: center;
+padding: 0;}

@@ -1,0 +1,26 @@
+<div class="container" style="background-color:#F5F5F5; height: 100vh;">
+    <h2 style="padding: 0; margin: 0; height: 10vh;text-align: center;">Your Projects </h2>
+    <div class="gridview" style="background: linear-gradient(#1e1e2f,#1e1e24);">
+        <div class="column" *ngFor="let item of experience" (click)="onProjectClick(item)">
+            <h1>{{item.name}}</h1>
+            <p>created : {{item.created.toLocaleDateString()+ " "+item.created.toLocaleTimeString()}}</p>
+        </div>
+    </div>
+
+    <div class="detail">
+        <h2> click here to create <a style="text-decoration: none; " href="">new Projects</a></h2>
+        <div class="currentProject" *ngIf="currentProject">
+            <h1>NAME:{{currentProject.name}}</h1>
+            <h2>created:{{currentProject.created.toLocaleDateString()}} {{currentProject.created.toLocaleTimeString()}}
+            </h2>
+            <h2>{{currentProject.lastEdited.toLocaleDateString()}} {{currentProject.lastEdited.toLocaleTimeString()}}
+            </h2>
+            <h4>
+                <button style="color: #fff;     border-radius: 15px;
+                background-color: #ec250d;
+                border: 0px;
+                padding: 10px;" (click)="dashBoardNavigate()">MODIFY</button>
+            </h4>
+        </div>
+    </div>
+</div>

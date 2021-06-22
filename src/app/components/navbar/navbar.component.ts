@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  responsive:boolean = false;
+  menus :string[] = ["News","Contact","About","Home"];
   constructor() { }
-
+  public changeClass(){
+    this.responsive = !this.responsive;
+  }
   ngOnInit(): void {
   }
-
 }

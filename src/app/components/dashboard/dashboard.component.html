@@ -1,0 +1,271 @@
+<div id="dashboard" style="display: flex;">
+    <div class="panel" style="border: 2px solid springgreen;">
+        <div class="right-panel">
+            <div class="right-panel-topbar">
+                <div class="right-panel-topbar-tabs">
+                    <div (click)="hotSpotDropCLick()">HotSpot Drop</div>
+                    <div (click)="regularClick()">Regular
+                    </div>
+                </div>
+                <div class="right-panel-topbar-nav">
+                    <a class="flex items-center"
+                        (click)="convert()">
+                        Back
+                    </a>
+                </div>
+                <div class="right-panel-topbar-nav">
+                    <a class="flex items-center"
+                        (click)="loadData()">
+                        Load
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="isPropertyScreen; else otherContent">
+        <div>
+            <div class="right-panel-newscene" (click)="createScene()">+ New Scene</div>
+        </div>
+        <ul class="imglist" *ngIf="currentModel"> images
+            <li *ngFor="let item of currentModel.sceneContent.imageMap | keyvalue">{{item.key}}</li>
+        </ul>
+    </div>
+    <ng-template #otherContent>
+        <div class="right-panel-items">
+            <div class="newscene-properties">
+                <div class="animateSvgColor"><span><svg width="26" height="26" viewBox="0 0 28 28" fill="none"
+                            xmlns="http://www.w3.org/2000/svg" class="disabled">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M15.4443 14.3553C14.9599 14.1126 14.6251 13.5909 14.6251 12.9872C14.6251 12.6143 14.7573 12.2778 14.968 12.0142C14.6698 11.8839 14.3431 11.8118 13.9996 11.8118C12.5952 11.8118 11.457 13.0159 11.457 14.501C11.457 15.4042 11.878 16.2037 12.5239 16.6916L15.4443 14.3553ZM13.5525 17.1493C13.6976 17.1766 13.847 17.1908 13.9996 17.1908C15.3204 17.1908 16.405 16.127 16.5311 14.7665L13.5525 17.1493Z"
+                                fill="#CCCCCC"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M5 14.4997C6.79928 11.2155 10.1521 9 14 9C16.1488 9 18.1428 9.69063 19.7982 10.8723L17.6886 12.56C17.0136 11.1284 15.6152 10.1448 14 10.1448C11.7255 10.1448 9.8822 12.0946 9.8822 14.5003C9.8822 15.7788 10.4026 16.9285 11.2318 17.7252L9.64916 18.9913C7.69692 18.036 6.07248 16.458 5 14.4997ZM10.6983 19.4326C11.7352 19.8006 12.8453 20 14 20C17.8485 20 21.2007 17.7845 23 14.4997C22.3742 13.3573 21.5605 12.3443 20.6033 11.5088L18.0251 13.5714C18.0866 13.8707 18.119 14.1815 18.119 14.5003C18.119 16.906 16.2751 18.8559 14 18.8559C13.2984 18.8559 12.6379 18.6704 12.0599 18.3434L10.6983 19.4326Z"
+                                fill="#CCCCCC"></path>
+                            <line x1="20.8829" y1="9.05417" x2="7.07171" y2="20.1027" stroke="#CCCCCC"
+                                stroke-width="1.5" stroke-linecap="round"></line>
+                        </svg></span><span><svg width="26" height="26" viewBox="0 0 28 28" fill="none"
+                            xmlns="http://www.w3.org/2000/svg" class="disabled">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M8.66602 13.3657C8.66602 13.0899 8.88928 12.8662 9.16504 12.8657L18.8322 12.8467C19.1087 12.8462 19.3332 13.0702 19.3332 13.3467V21.4811C19.3332 21.7569 19.1099 21.9806 18.8342 21.9811L9.16699 22.0001C8.89047 22.0006 8.66602 21.7766 8.66602 21.5001V13.3657ZM14.5706 17.7285V19.5637H13.4112V17.7285C12.974 17.5266 12.6889 17.0861 12.6889 16.5906C12.6889 15.8932 13.2781 15.3243 14.0004 15.3243C14.7227 15.3243 15.3119 15.8932 15.3119 16.5906C15.2929 17.1045 14.9888 17.5266 14.5706 17.7285Z"
+                                fill="#CCCCCC"></path>
+                            <path
+                                d="M18.2148 10.0375V12.8539H16.6562V10.0375C16.6562 8.64269 15.4777 7.50484 14.0332 7.50484C12.5886 7.50484 11.4102 8.64269 11.4102 10.0375V12.8709H9.85156V10.0375C9.85156 7.81683 11.7333 5.99993 14.0332 5.99993C16.3331 5.99993 18.2148 7.81683 18.2148 10.0375Z"
+                                fill="#CCCCCC"></path>
+                        </svg></span><span><svg width="26" height="26" viewBox="0 0 28 28" fill="none"
+                            xmlns="http://www.w3.org/2000/svg" class="disabled">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M14 16.4231C12.6641 16.4231 11.5769 15.3359 11.5769 14C11.5769 12.6641 12.6641 11.5769 14 11.5769C15.3359 11.5769 16.4231 12.6641 16.4231 14C16.4231 15.3359 15.3359 16.4231 14 16.4231ZM14 10.5C12.0669 10.5 10.5 12.0669 10.5 14C10.5 15.9331 12.0669 17.5 14 17.5C15.9331 17.5 17.5 15.9331 17.5 14C17.5 12.0669 15.9331 10.5 14 10.5Z"
+                                fill="#CCCCCC"></path>
+                            <path
+                                d="M14 16.4231C12.6641 16.4231 11.5769 15.3359 11.5769 14C11.5769 12.6641 12.6641 11.5769 14 11.5769C15.3359 11.5769 16.4231 12.6641 16.4231 14C16.4231 15.3359 15.3359 16.4231 14 16.4231Z"
+                                fill="#CCCCCC"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M14 19.4878C11.1102 19.4878 8.76744 17.0308 8.76744 14C8.76744 10.9692 11.1102 8.5122 14 8.5122C16.89 8.5122 19.2326 10.9692 19.2326 14C19.2326 17.0308 16.89 19.4878 14 19.4878ZM22.5824 13.561H20.0536C19.8473 10.4002 17.4323 7.86749 14.4186 7.65105V5.43771C14.4186 5.19646 14.2311 5 14 5C13.7673 5 13.5814 5.19602 13.5814 5.43771V7.65105C10.5677 7.86749 8.15272 10.4002 7.94635 13.561H5.41756C5.18691 13.561 5 13.7577 5 14C5 14.2441 5.18691 14.439 5.41756 14.439H7.94635C8.15272 17.5998 10.5677 20.1325 13.5814 20.349V22.5623C13.5814 22.8035 13.7689 23 14 23C14.2327 23 14.4186 22.804 14.4186 22.5623V20.349C17.4323 20.1325 19.8473 17.5998 20.0536 14.439H22.5824C22.8131 14.439 23 14.2423 23 14C23 13.7559 22.8129 13.561 22.5824 13.561Z"
+                                fill="#CCCCCC"></path>
+                        </svg></span></div>
+                <div class="scene-operation"><span><svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                            xmlns="http://www.w3.org/2000/svg" class="disabled">
+                            <path
+                                d="M12.6 8H8.4C7.6258 8 7.007 8.672 7.007 9.5L7 18.5C7 18.8978 7.1475 19.2794 7.41005 19.5607C7.6726 19.842 8.0287 20 8.4 20H19.6C20.3721 20 21 19.328 21 18.5V11C21 10.172 20.3721 9.5 19.6 9.5H14L12.6 8Z"
+                                fill="#CCCCCC"></path>
+                        </svg></span>
+                    <span><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26"
+                            fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M13.733 8.36364H19.358H20.6364V9.64205V15.267V16.5455H19.2727V17.9091H20.6364C21.3895 17.9091 22 17.297 22 16.5455V15.267V9.64205V8.36364C22 7.61052 21.3879 7 20.6364 7H19.358H13.733H12.4545C11.7014 7 11.0909 7.61205 11.0909 8.36364V9.72727H12.4545V8.36364H13.733ZM7 12.456C7 11.7021 7.6099 11.0909 8.36509 11.0909H16.544C17.2979 11.0909 17.9091 11.7008 17.9091 12.456V20.6349C17.9091 21.3888 17.2992 22 16.544 22H8.36509C7.61117 22 7 21.3901 7 20.6349V12.456Z"
+                                fill="#595959"></path>
+                        </svg></span>
+                    <span><svg width="28" height="28" viewBox="0 0 28 28" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M20.9991 8.03434H17.6654L16.896 6.78064H11.7672L10.9978 8.03434H7.66406V9.4733H20.9991V8.03434Z"
+                                fill="#595959">
+                            </path>
+                            <path
+                                d="M9.44141 20.7263V9.83932H19.2249V20.7263C19.2249 20.8644 19.113 20.9763 18.9749 20.9763H9.6914C9.55333 20.9763 9.44141 20.8644 9.44141 20.7263Z"
+                                stroke="#595959" stroke-width="1.5"></path>
+                            <rect x="15.3125" y="12.2664" width="1.34633" height="6.28287" fill="#595959"></rect>
+                            <rect x="12.0039" y="12.2664" width="1.34633" height="6.28287" fill="#595959"></rect>
+                        </svg></span>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="currentModel">
+        <div class="scene list">
+                <div class="infoText">
+                    <div><span><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26"
+                                fill="none">
+                                <path
+                                    d="M13.25 11.5625C13.25 11.2535 13.5035 11 13.8125 11H14.1875C14.4965 11 14.75 11.2535 14.75 11.5625V11.9375C14.75 12.2465 14.4965 12.5 14.1875 12.5H13.8125C13.6635 12.4994 13.5208 12.44 13.4154 12.3346C13.31 12.2292 13.2506 12.0865 13.25 11.9375V11.5625Z"
+                                    fill="#999999"></path>
+                                <path d="M15.5 17H12.5V16.25H13.25V14H12.5V13.25H14.75V16.25H15.5V17Z" fill="#999999">
+                                </path>
+                                <path
+                                    d="M14 8C12.4087 8 10.8826 8.63214 9.75736 9.75736C8.63214 10.8826 8 12.4087 8 14C8 15.5913 8.63214 17.1174 9.75736 18.2426C10.8826 19.3679 12.4087 20 14 20C15.5913 20 17.1174 19.3679 18.2426 18.2426C19.3679 17.1174 20 15.5913 20 14C20 12.4087 19.3679 10.8826 18.2426 9.75736C17.1174 8.63214 15.5913 8 14 8V8ZM14 18.875C12.7071 18.875 11.4671 18.3614 10.5529 17.4471C9.63861 16.5329 9.125 15.2929 9.125 14C9.125 12.7071 9.63861 11.4671 10.5529 10.5529C11.4671 9.63861 12.7071 9.125 14 9.125C15.2929 9.125 16.5329 9.63861 17.4471 10.5529C18.3614 11.4671 18.875 12.7071 18.875 14C18.875 15.2929 18.3614 16.5329 17.4471 17.4471C16.5329 18.3614 15.2929 18.875 14 18.875Z"
+                                    fill="#999999"></path>
+                            </svg></span></div>
+                    <div>A Scene is where you place all the 2D and 3D elements. You can change scene rotation and choose
+                        to start it with a different viewing direction (camera) from the Scene settings.</div>
+                </div>
+        </div>
+        <div class="angle-input">
+            <hr>
+            <div class="angle-input__block_heading"
+                style="letter-spacing: 0.5px; text-transform: uppercase; font-weight: 500; color: rgb(153, 153, 153);">
+                Pitch Range <sup>(beta)</sup></div>
+            <div class="flex_padding">
+                <div style="display: inline-block;"><span class="angle__block_heading"
+                        style="margin-right: 4px;">Min:</span>
+                        <div class="angle__text_slide">
+                            <div class="angle-props__icon"><span><svg width="26" height="26" viewBox="0 0 100 100"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M68 50C68 56.0751 55.464 61 40 61C24.536 61 12 56.0751 12 50C12 43.9249 24.536 39 40 39C55.464 39 68 43.9249 68 50ZM16.2 50C16.2 55.1639 26.8556 59.35 40 59.35C53.1444 59.35 63.8 55.1639 63.8 50C63.8 44.8361 53.1444 40.65 40 40.65C26.8556 40.65 16.2 44.8361 16.2 50Z"
+                                            fill="black"></path>
+                                        <ellipse cx="40" cy="50" rx="5.25" ry="2.0625" fill="black"></ellipse>
+                                        <path
+                                            d="M34.7418 24.0495C37.2392 22.1605 39.963 21.5622 42.6271 22.3174C45.2912 23.0726 47.7971 25.1534 49.8814 28.3412C51.9658 31.529 53.5516 35.706 54.4723 40.4332C55.393 45.1605 55.6145 50.2634 55.1135 55.2056L40.375 50L34.7418 24.0495Z"
+                                            fill="black"></path>
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M78.1742 34.104L78.1742 49L80.8258 49L80.8258 34.104L85.1253 38.428L87 36.5427L79.5 29L72 36.5427L73.8747 38.428L78.1742 34.104Z"
+                                            fill="black"></path>
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M80.8258 63.896L80.8258 49L78.1742 49L78.1742 63.896L73.8747 59.572L72 61.4573L79.5 69L87 61.4573L85.1253 59.572L80.8258 63.896Z"
+                                            fill="black"></path>
+                                    </svg></span></div><input class="angle__text_slide__input" type="number" max="90"
+                                min="-90" step="1" title=" " value="-90.00">
+                            <div class="angle-props__scrolls"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="6"
+                                    viewBox="0 0 8 6" fill="none">
+                                    <path
+                                        d="M3.59035 0.505373C3.7894 0.220948 4.2106 0.220948 4.40965 0.505373L7.44947 4.84909C7.68138 5.18049 7.4443 5.63577 7.03981 5.63577H0.960185C0.555701 5.63577 0.318618 5.18049 0.550534 4.84909L3.59035 0.505373Z"
+                                        fill="#595959"></path>
+                                </svg><svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6"
+                                    fill="none">
+                                    <path
+                                        d="M3.59035 5.17464C3.7894 5.45907 4.2106 5.45907 4.40965 5.17464L7.44947 0.830924C7.68138 0.499529 7.4443 0.0442429 7.03981 0.0442429H0.960185C0.555701 0.0442429 0.318618 0.49953 0.550534 0.830924L3.59035 5.17464Z"
+                                        fill="#595959"></path>
+                                </svg></div>
+                        </div>
+                    
+                </div>
+                <div style="display: inline-block; margin-left: 15px;"><span class="angle__block_heading"
+                        style="margin-right: 4px;">Max:</span>
+                    <div class="fv4_tooltip" id="fv4_tooltip1623912376199">
+                        <div class="angle__text_slide">
+                            <div class="angle-props__icon"><span><svg width="26" height="26" viewBox="0 0 100 100"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M68 50C68 56.0751 55.464 61 40 61C24.536 61 12 56.0751 12 50C12 43.9249 24.536 39 40 39C55.464 39 68 43.9249 68 50ZM16.2 50C16.2 55.1639 26.8556 59.35 40 59.35C53.1444 59.35 63.8 55.1639 63.8 50C63.8 44.8361 53.1444 40.65 40 40.65C26.8556 40.65 16.2 44.8361 16.2 50Z"
+                                            fill="black"></path>
+                                        <ellipse cx="40" cy="50" rx="5.25" ry="2.0625" fill="black"></ellipse>
+                                        <path
+                                            d="M34.7418 24.0495C37.2392 22.1605 39.963 21.5622 42.6271 22.3174C45.2912 23.0726 47.7971 25.1534 49.8814 28.3412C51.9658 31.529 53.5516 35.706 54.4723 40.4332C55.393 45.1605 55.6145 50.2634 55.1135 55.2056L40.375 50L34.7418 24.0495Z"
+                                            fill="black"></path>
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M78.1742 34.104L78.1742 49L80.8258 49L80.8258 34.104L85.1253 38.428L87 36.5427L79.5 29L72 36.5427L73.8747 38.428L78.1742 34.104Z"
+                                            fill="black"></path>
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M80.8258 63.896L80.8258 49L78.1742 49L78.1742 63.896L73.8747 59.572L72 61.4573L79.5 69L87 61.4573L85.1253 59.572L80.8258 63.896Z"
+                                            fill="black"></path>
+                                    </svg></span></div><input class="angle__text_slide__input" type="number" max="90"
+                                min="-90" step="1" title=" " value="90.00">
+                            <div class="angle-props__scrolls"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="6"
+                                    viewBox="0 0 8 6" fill="none">
+                                    <path
+                                        d="M3.59035 0.505373C3.7894 0.220948 4.2106 0.220948 4.40965 0.505373L7.44947 4.84909C7.68138 5.18049 7.4443 5.63577 7.03981 5.63577H0.960185C0.555701 5.63577 0.318618 5.18049 0.550534 4.84909L3.59035 0.505373Z"
+                                        fill="#595959"></path>
+                                </svg><svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6"
+                                    fill="none">
+                                    <path
+                                        d="M3.59035 5.17464C3.7894 5.45907 4.2106 5.45907 4.40965 5.17464L7.44947 0.830924C7.68138 0.499529 7.4443 0.0442429 7.03981 0.0442429H0.960185C0.555701 0.0442429 0.318618 0.49953 0.550534 0.830924L3.59035 5.17464Z"
+                                        fill="#595959"></path>
+                                </svg></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fv-helper__mt20 fv-helper__ml8 fv-helper__w100">
+            <hr>
+            <div class="angle__block_heading"
+                style="letter-spacing: 0.5px; text-transform: uppercase; font-weight: 500; color: rgb(153, 153, 153);">
+                Yaw Range <sup>(beta)</sup></div>
+            <div class="flex_padding">
+                <div style="display: inline-block;"><span class="angle__block_heading"
+                        style="margin-right: 4px;">Min:</span>
+                    <div class="fv4_tooltip" id="fv4_tooltip1623912716455">
+                        <div class="angle__text_slide">
+                            <div class="angle-props__icon"><span><svg width="26" height="26" viewBox="0 0 100 100"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M78 39C78 45.0751 65.464 50 50 50C34.536 50 22 45.0751 22 39C22 32.9249 34.536 28 50 28C65.464 28 78 32.9249 78 39ZM26.2 39C26.2 44.1639 36.8556 48.35 50 48.35C63.1444 48.35 73.8 44.1639 73.8 39C73.8 33.8361 63.1444 29.65 50 29.65C36.8556 29.65 26.2 33.8361 26.2 39Z"
+                                            fill="black"></path>
+                                        <ellipse cx="50" cy="39" rx="5.25" ry="2.0625" fill="black"></ellipse>
+                                        <path
+                                            d="M25.7513 33.5C28.2088 31.8278 31.7435 30.4392 36 29.4737C40.2565 28.5083 45.085 28 50 28C54.915 28 59.7435 28.5083 64 29.4737C68.2565 30.4392 71.7912 31.8278 74.2487 33.5L50 39L25.7513 33.5Z"
+                                            fill="black"></path>
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M64.896 62.1742L50 62.1742L50 64.8258L64.896 64.8258L60.572 69.1253L62.4573 71L70 63.5L62.4573 56L60.572 57.8747L64.896 62.1742Z"
+                                            fill="black"></path>
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M35.104 64.8258L50 64.8258L50 62.1742L35.104 62.1742L39.428 57.8747L37.5427 56L30 63.5L37.5427 71L39.428 69.1253L35.104 64.8258Z"
+                                            fill="black"></path>
+                                    </svg></span></div><input class="angle__text_slide__input" type="number"
+                                max="180" min="-180" step="1" title=" " value="-180.00">
+                            <div class="angle-props__scrolls"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="6"
+                                    viewBox="0 0 8 6" fill="none">
+                                    <path
+                                        d="M3.59035 0.505373C3.7894 0.220948 4.2106 0.220948 4.40965 0.505373L7.44947 4.84909C7.68138 5.18049 7.4443 5.63577 7.03981 5.63577H0.960185C0.555701 5.63577 0.318618 5.18049 0.550534 4.84909L3.59035 0.505373Z"
+                                        fill="#595959"></path>
+                                </svg><svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6"
+                                    fill="none">
+                                    <path
+                                        d="M3.59035 5.17464C3.7894 5.45907 4.2106 5.45907 4.40965 5.17464L7.44947 0.830924C7.68138 0.499529 7.4443 0.0442429 7.03981 0.0442429H0.960185C0.555701 0.0442429 0.318618 0.49953 0.550534 0.830924L3.59035 5.17464Z"
+                                        fill="#595959"></path>
+                                </svg></div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: inline-block; margin-left: 15px;"><span class="angle__block_heading"
+                        style="margin-right: 4px;">Max:</span>
+                    <div class="fv4_tooltip" id="fv4_tooltip1623912731279">
+                        <div class="angle__text_slide">
+                            <div class="angle-props__icon"><span><svg width="26" height="26" viewBox="0 0 100 100"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M78 39C78 45.0751 65.464 50 50 50C34.536 50 22 45.0751 22 39C22 32.9249 34.536 28 50 28C65.464 28 78 32.9249 78 39ZM26.2 39C26.2 44.1639 36.8556 48.35 50 48.35C63.1444 48.35 73.8 44.1639 73.8 39C73.8 33.8361 63.1444 29.65 50 29.65C36.8556 29.65 26.2 33.8361 26.2 39Z"
+                                            fill="black"></path>
+                                        <ellipse cx="50" cy="39" rx="5.25" ry="2.0625" fill="black"></ellipse>
+                                        <path
+                                            d="M25.7513 33.5C28.2088 31.8278 31.7435 30.4392 36 29.4737C40.2565 28.5083 45.085 28 50 28C54.915 28 59.7435 28.5083 64 29.4737C68.2565 30.4392 71.7912 31.8278 74.2487 33.5L50 39L25.7513 33.5Z"
+                                            fill="black"></path>
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M64.896 62.1742L50 62.1742L50 64.8258L64.896 64.8258L60.572 69.1253L62.4573 71L70 63.5L62.4573 56L60.572 57.8747L64.896 62.1742Z"
+                                            fill="black"></path>
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M35.104 64.8258L50 64.8258L50 62.1742L35.104 62.1742L39.428 57.8747L37.5427 56L30 63.5L37.5427 71L39.428 69.1253L35.104 64.8258Z"
+                                            fill="black"></path>
+                                    </svg></span></div><input class="angle__text_slide__input" type="number"
+                                max="180" min="-180" step="1" title=" " value="180.00">
+                            <div class="angle-props__scrolls"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="6"
+                                    viewBox="0 0 8 6" fill="none">
+                                    <path
+                                        d="M3.59035 0.505373C3.7894 0.220948 4.2106 0.220948 4.40965 0.505373L7.44947 4.84909C7.68138 5.18049 7.4443 5.63577 7.03981 5.63577H0.960185C0.555701 5.63577 0.318618 5.18049 0.550534 4.84909L3.59035 0.505373Z"
+                                        fill="#595959"></path>
+                                </svg><svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6"
+                                    fill="none">
+                                    <path
+                                        d="M3.59035 5.17464C3.7894 5.45907 4.2106 5.45907 4.40965 5.17464L7.44947 0.830924C7.68138 0.499529 7.4443 0.0442429 7.03981 0.0442429H0.960185C0.555701 0.0442429 0.318618 0.49953 0.550534 0.830924L3.59035 5.17464Z"
+                                        fill="#595959"></path>
+                                </svg></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </ng-template>
+    </div>
+    <div style="width: 100%;">
+        <canvas   ngModel #canvas style="float: right; width:75%;height: 100vh;"></canvas>
+    </div>
+</div>
